@@ -1,0 +1,46 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+    <h1>Советы коллег:</h1>
+    <table>
+        <thead>
+            <th>Доступен с</th>
+            <th>Штраф, мин</th>
+            <th>Получить совет</th>
+            <th>Время получения</th>
+            <th>Текст совета</th>
+        </thead>
+        {% for x in advices %}
+            <tr>
+            <td>{{ x.showtime }}</td>
+            <td>{{ x.penalty }}</td>
+            <td>{% if x.notneed %}
+                Не пригодится)
+                {% elif x.may_take %}
+                <a href="take/{{ x.id }}">Получить</a>
+                {% endif %}
+            </td>
+            <td>{{ x.take_time }}</td>
+            <td>{{ x.description }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+{% endblock %}
+
+{% block sidebar %}
+    {% load static %}
+    <ul>
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+        <li>
+            <a href="{% url 'index' %}">Информация о сотруднике</a>
+        </li>
+        <li>
+            <a href="{% url 'advice' %}">Советы коллег</a>
+        </li>
+         <li>
+            <a href="{% url 'docs' %}">Документы</a>
+        </li>
+    </ul>
+{% endblock %}

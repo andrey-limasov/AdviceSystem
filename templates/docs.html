@@ -1,0 +1,30 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    {% load static %}
+    <h1>Документы</h1>
+    <ol>
+        <li><a href="{% url 'docs' filename='flipper_manual.pdf' %}">Flipper Manual</a></li>
+        <li><a href="{% url 'docs' filename='IP_Camera_R-Link_2022.pdf' %}">IP Camera R-Link 2022 Manual</a></li>
+        <li><a href="{% url 'docs' filename='linux_cmds_manual.pdf' %}">Основные команды Linux</a></li>
+        <li><a href="{% url 'docs' filename='nmap_manual.pdf' %}">Руководство nmap</a></li>
+        <li><a href="{% url 'docs' filename='sql_manual.pdf' %}">Руководство по SQL и PostgreSQL</a></li>
+        <li><a href="{% url 'docs' filename='ssh_manual.pdf' %}">SHH Manual</a></li>
+    </ol>
+{% endblock %}
+
+{% block sidebar %}
+    {% load static %}
+    <ul>
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+        <li>
+            <a href="{% url 'index' %}">Информация о сотруднике</a>
+        </li>
+        <li>
+            <a href="{% url 'advice' %}">Советы коллег</a>
+        </li>
+         <li>
+            <a href="{% url 'docs' %}">Документы</a>
+        </li>
+    </ul>
+{% endblock %}

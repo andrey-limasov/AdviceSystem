@@ -1,4 +1,4 @@
-"""AdviceSystem URL Configuration
+"""IS URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.1/topics/http/urls/
@@ -13,9 +13,16 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from django.views.generic import RedirectView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('rootadmin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('turnir/', include('turnir.urls')),
+    path('', RedirectView.as_view(url='accounts/login', permanent=True)),
 ]
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
