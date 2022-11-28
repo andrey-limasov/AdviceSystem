@@ -9,4 +9,5 @@ urlpatterns = [
     path('docs/', views.docs, name='docs'),
     path('docs/<filename>/', views.docs, name='docs'),
     path('mainkey/', views.mainkey, name='mainkey'),
+    path('gener/', views.gener, name='gener'),
 ]

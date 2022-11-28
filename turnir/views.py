@@ -19,7 +19,8 @@ def index(request):
 
     # Generate counts of some of the main objects
     if request.method == 'POST':
-
+        request.user.employee.flagsubmit += 1
+        request.user.save()
         # Create a form instance and populate it with data from the request (binding):
         form = RegisterFlagForm(request.POST)
 
@@ -142,3 +143,19 @@ def handle_uploaded_file(f, filename):
     with open(filename, 'wb+') as destination:
         for chunk in f.chunks():
             destination.write(chunk)
+
+def gener(request):
+    # Users = User.objects.all()
+    # ual = []
+    # for u in Users:
+    #     for aid in range(1, 11):
+    #         a = Advice.objects.filter(id=aid)[0]
+    #         ual.append(UserAdvice(user_id=u, showed=False, notneed=False, take_time=datetime.datetime.now(), advice_id=a))
+    # for ua in ual:
+    #     ua.save()
+    # flags = Flag.objects.all()
+    # for f in flags:
+    #     f.captured = False;
+    #     f.capture_time = datetime.datetime.now()
+    #     f.save()
+    return HttpResponseRedirect(reverse('index'))

@@ -94,3 +94,4 @@ class UserAdvice(models.Model):
 class Employee(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     dbname = models.CharField(max_length=100)
+    flagsubmit = models.IntegerField(default=0)
