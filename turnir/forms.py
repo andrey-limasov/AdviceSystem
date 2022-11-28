@@ -17,6 +17,19 @@ class RegisterFlagForm(forms.Form):
         # Remember to always return the cleaned data.
         return data
 
+class RegisterMainKeyForm(forms.Form):
+    file = forms.FileField(help_text="Chose file.", label="Chose file")
+
+    # def clean_renewal_date(self):
+    #     data = self.cleaned_data['flag_hash']
+    #
+    #     # Check if a date is not in the past.
+    #     # if data.isnumeric():
+    #     #     raise ValidationError(_('%(data)s is not an number'), params={'value': data},)
+    #
+    #     # Remember to always return the cleaned data.
+    #     return data
+
 
 # def validate_int(value):
 #     if value.isnumeric():

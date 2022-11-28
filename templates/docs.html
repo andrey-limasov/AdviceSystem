@@ -10,6 +10,7 @@
         <li><a href="{% url 'docs' filename='nmap_manual.pdf' %}">Руководство nmap</a></li>
         <li><a href="{% url 'docs' filename='sql_manual.pdf' %}">Руководство по SQL и PostgreSQL</a></li>
         <li><a href="{% url 'docs' filename='ssh_manual.pdf' %}">SHH Manual</a></li>
+        <li><a href="{% url 'docs' filename='main_flag_ex.csv' %}">Пример файла с персональными данными</a></li>
     </ol>
 {% endblock %}
 
@@ -18,7 +19,10 @@
     <ul>
         <li><a href="{% url 'logout' %}">Logout</a></li>
         <li>
-            <a href="{% url 'index' %}">Информация о сотруднике</a>
+            <a href="{% url 'index' %}">Сдать флаг</a>
+        </li>
+        <li>
+            <a href="{% url 'mainkey' %}">Сдать главный флаг</a>
         </li>
         <li>
             <a href="{% url 'advice' %}">Советы коллег</a>

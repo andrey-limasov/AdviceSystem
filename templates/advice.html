@@ -1,7 +1,7 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-
+    {% load static %}
     <h1>Советы коллег:</h1>
     <table>
         <thead>
@@ -34,7 +34,10 @@
     <ul>
         <li><a href="{% url 'logout' %}">Logout</a></li>
         <li>
-            <a href="{% url 'index' %}">Информация о сотруднике</a>
+            <a href="{% url 'index' %}">Сдать флаг</a>
+        </li>
+        <li>
+            <a href="{% url 'mainkey' %}">Сдать главный флаг</a>
         </li>
         <li>
             <a href="{% url 'advice' %}">Советы коллег</a>

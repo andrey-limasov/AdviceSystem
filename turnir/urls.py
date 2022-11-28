@@ -8,4 +8,5 @@ urlpatterns = [
     path('advice/take/<int:pk>', views.take_advice, name='take_advice'),
     path('docs/', views.docs, name='docs'),
     path('docs/<filename>/', views.docs, name='docs'),
+    path('mainkey/', views.mainkey, name='mainkey'),
 ]

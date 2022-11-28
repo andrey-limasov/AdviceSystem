@@ -42,7 +42,7 @@ class Flag(models.Model):
 
     def __str__(self):
         """String for representing the MyModelName object (in Admin site etc.)."""
-        return self.hash.__str__()
+        return self.user_id.__str__() + ' ' + self.type_id_id.__str__() + ' ' + self.hash.__str__()
 
 
 class Advice(models.Model):
@@ -90,3 +90,7 @@ class UserAdvice(models.Model):
     def __str__(self):
         """String for representing the MyModelName object (in Admin site etc.)."""
         return self.user_id.__str__() + ' ' + self.advice_id.__str__()
+
+class Employee(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    dbname = models.CharField(max_length=100)

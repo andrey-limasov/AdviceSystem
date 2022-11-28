@@ -2,19 +2,21 @@
 
 {% block content %}
 
-    <h1>Зарегистрировать флаг:</h1>
-    <form action="" method="post">
+    <h1>Сдать csv фaйл:</h1>
+    <form action="" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_ul }}
     <input type="submit" value="Submit">
   </form>
     <h2>Захваченные флаги</h2>
+    {% if em %}
+        <p><strong>Сданный файл является неверным</strong></p>
+    {% endif %}
     <ol>
         {% for x in cf %}
             <li>{{ x.hash }} : {{ x.description }} </li>
         {% endfor %}
     </ol>
-
 {% endblock %}
 
 {% block sidebar %}
