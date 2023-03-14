@@ -2,18 +2,40 @@
 
 {% block content %}
 
-    <h1>Зарегистрировать флаг:</h1>
-    <form action="" method="post">
-    {% csrf_token %}
-    {{ form.as_ul }}
-    <input type="submit" value="Submit">
-  </form>
-    <h2>Захваченные флаги</h2>
-    <ol>
-        {% for x in cf %}
-            <li>{{ x.hash }} : {{ x.description }} </li>
-        {% endfor %}
-    </ol>
+    <h1>Турнирная таблица</h1>
+    <table>
+    <thead>
+        <th>Команда</th>
+        <th>Флаг 1</th>
+        <th>Флаг 2</th>
+        <th>Флаг 3</th>
+        <th>Флаг 4</th>
+        <th>Флаг 5</th>
+        <th>Флаг 6</th>
+        <th>Флаг 7</th>
+        <th>Совет 1</th>
+        <th>Совет 2</th>
+        <th>Совет 3</th>
+        <th>Совет 4</th>
+        <th>Совет 5</th>
+        <th>Совет 6</th>
+        <th>Совет 7</th>
+        <th>Совет 8</th>
+        <th>Совет 9</th>
+        <th>Совет 10</th>
+    </thead>
+    {% for user, results in dashboard.items %}
+        <tr>
+            <td>{{ user.username }}</td>
+            {% for flag in results.0 %}
+                <td>{% if flag.captured %} {{ flag.capture_time }} {% else %} 0 {% endif %}</td>
+            {% endfor %}
+            {% for advice in results.1 %}
+                <td>{% if advice.showed %} {{ advice.advice_id.penalty }} {% else %} 0 {% endif %}</td>
+            {% endfor %}
+        </tr>
+    {% endfor %}
+    </table>
 
 {% endblock %}
 
@@ -32,6 +54,9 @@
         </li>
          <li>
             <a href="{% url 'docs' %}">Документы</a>
+        </li>
+        <li>
+            <a href="{% url 'dashboard' %}">Турнирная таблица</a>
         </li>
     </ul>
 {% endblock %}

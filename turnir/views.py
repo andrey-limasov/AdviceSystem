@@ -2,6 +2,7 @@ import datetime
 import mimetypes
 import os
 import pandas as pd
+from django.contrib.auth.models import User
 
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
@@ -95,8 +96,14 @@ def take_advice(request, pk):
     return HttpResponseRedirect(reverse('advice'))
 
 def dashboard(request):
-
-    return render(request, 'dashboard.html')
+    users = User.objects.all()
+    dashboard = {}
+    for u in users:
+        dashboard[u] = [Flag.objects.all().filter(user_id=u), UserAdvice.objects.all().filter(user_id=u)]
+    context = {
+        'dashboard': dashboard,
+    }
+    return render(request, 'dashboard.html', context=context)
 
 
 def mainkey(request):
