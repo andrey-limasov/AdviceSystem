@@ -16,7 +16,7 @@ services:
     build: .
     restart: always
     env_file: dev.env
-    command: gunicorn IS.wsgi:application --bind 0.0.0.0:5000
+    command: gunicorn AdviceSystem.wsgi:application --bind 0.0.0.0:5000
     volumes:
      - .:/app
      - static_volume:/app/static
